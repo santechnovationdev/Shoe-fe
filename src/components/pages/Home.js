@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useMemo, useContext } from "react";
 import { BsExclamationTriangle } from "react-icons/bs";
 import { GoCheckCircle } from "react-icons/go";
-import { GiSteeltoeBoots } from "react-icons/gi";
+import { GiConverseShoe } from "react-icons/gi";
+
 
 import LiveChart from "../blocks/LiveChart";
 import { DContext } from "../../context/Datacontext";
@@ -12,9 +13,10 @@ import { THINGSPEAK_URL } from "../../utils/thinkSpeak";
 
 
 const CHART_CONFIG = [
-  { key: "field1", label: "Toe", color: "red" },
-  { key: "field2", label: "Arch", color: "green" },
-  { key: "field3", label: "Heel", color: "green" },
+  { key: "field1", label: "Distance", color: "red" },
+  { key: "field2", label: "Toe", color: "blue" },
+  { key: "field3", label: "Arch", color: "orange" },
+  { key: "field4", label: "Heel", color: "violet" },
 ];
 
 const CONTROLS = {
@@ -135,20 +137,19 @@ function Home() {
     ? latest.field1.split(",").map(val => val.trim())
     : [];
 
-  const Toe = latest?.field1
-  const Arch = latest?.field2
-  const Heal = latest?.field3
-  const Distance = latest?.field4
+  const Distance = latest?.field1
+  const Toe = latest?.field2
+  const Arach = latest?.field3
+  const Heel = latest?.field4
   const isWater = latest?.field5
   const Logntiturde = latest?.field6
   const Latntiturde = latest?.field7
 
-
   const metrics = [
-    { label: "Toe", value: Toe, color: "bg-blue-500", icon: GiSteeltoeBoots },
-    { label: "Arch", value: Arch, color: "bg-green-500", icon: GiSteeltoeBoots },
-    { label: "Heel", value: Heal, color: "bg-orange-500", icon: GiSteeltoeBoots },
-    { label: "Distance", value: Distance, color: "bg-purple-500", icon: GiSteeltoeBoots }
+    { label: "Toe", value: Toe, color: "bg-blue-500", icon: GiConverseShoe },
+    { label: "Arch", value: Arach, color: "bg-green-500", icon: GiConverseShoe },
+    { label: "Heel", value: Heel, color: "bg-orange-500", icon: GiConverseShoe },
+    { label: "Distance", value: Distance, color: "bg-purple-500", icon: GiConverseShoe }
   ];
 
   // Loading State
